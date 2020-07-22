@@ -71,29 +71,60 @@ public class JsoNcheckpointApplication {
 		singlemovie.setCredits(newpersonlist);
 		return singlemovie;
 	}
+
+//	public singleMovie[] theSingleMovie() {
+//		singleMovie[] singlemovie = new singleMovie[2];
+//		singlemovie[0] = new singleMovie();
+//		singlemovie[0].title = "The Godfather";
+//		singlemovie[0].minutes = 175;
+//		singlemovie[0].genre = "Crime, Drama";
+//		singlemovie[0].rating = 9.2;
+//		singlemovie[0].metascore = 100;
+//		singlemovie[0].description = "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.";
+//		singlemovie[0].votes = 1561591;
+//		singlemovie[0].gross = 134.97;
+//		singlemovie[0].year = "1972";
+//		singleMovie.personObj[] personObj = new singleMovie.personObj[1];
+//		singleMovie.personObj.Person person1 = new singleMovie.personObj.Person();
+//		person1.setRole("Director");
+//		person1.setFirstName("Francis Ford");
+//		person1.setLastName("Copolla");
+//		personObj[0] = new singleMovie.personObj();
+//		personObj[0].setPerson(person1);
+//		singlemovie[0].setCredits(personObj);
+//		person1.setFirstName("Some name");
+//		person1.setLastName("Some other name");
+//		tickets1[0] = new Flight.Ticket();
+//		tickets1[0].setPassenger(person1);
+//		tickets1[0].setPrice(200);
+//		flights[0].setTickets(tickets1);
+//
+//		flights[1] = new Flight();
+//		flights[1].setDeparts(new Date());
+//		Flight.Ticket[] tickets2 = new Flight.Ticket[1];
+//		Flight.Ticket.Person person2 = new Flight.Ticket.Person();
+//		person2.setLastName("Some other name");
+//		tickets2[0] = new Flight.Ticket();
+//		tickets2[0].setPassenger(person2);
+//		tickets2[0].setPrice(400);
+//		flights[1].setTickets(tickets2);
+//		return singlemovie;
+//	}
+
 	@JsonInclude(JsonInclude.Include.NON_NULL)
 	public static class singleMovie{
-		@JsonProperty("Title")
 		private String title;
-		@JsonProperty("Minutes")
 		private int minutes;
-		@JsonProperty("Genre")
 		private String genre;
-		@JsonProperty("Rating")
 		private double rating;
-		@JsonProperty("Metascore")
 		private int metascore;
-		@JsonProperty("Description")
 		private String description;
-		@JsonProperty("Votes")
 		private long votes;
-		@JsonProperty("Gross")
 		private double gross;
-		@JsonProperty("Year")
 		private String year;
-		@JsonProperty("Credits")
 		private List<personObj> credits;
 
+		@JsonProperty("Title")
 		public String getTitle() {
 			return title;
 		}
@@ -102,6 +133,7 @@ public class JsoNcheckpointApplication {
 			this.title = title;
 		}
 
+		@JsonProperty("Minutes")
 		public int getMinutes() {
 			return minutes;
 		}
@@ -110,6 +142,7 @@ public class JsoNcheckpointApplication {
 			this.minutes = minutes;
 		}
 
+		@JsonProperty("Genre")
 		public String getGenre() {
 			return genre;
 		}
@@ -118,6 +151,7 @@ public class JsoNcheckpointApplication {
 			this.genre = genre;
 		}
 
+		@JsonProperty("Rating")
 		public double getRating() {
 			return rating;
 		}
@@ -126,6 +160,7 @@ public class JsoNcheckpointApplication {
 			this.rating = rating;
 		}
 
+		@JsonProperty("Metascore")
 		public int getMetascore() {
 			return metascore;
 		}
@@ -134,6 +169,7 @@ public class JsoNcheckpointApplication {
 			this.metascore = metascore;
 		}
 
+		@JsonProperty("Description")
 		public String getDescription() {
 			return description;
 		}
@@ -142,6 +178,7 @@ public class JsoNcheckpointApplication {
 			this.description = description;
 		}
 
+		@JsonProperty("Votes")
 		public long getVotes() {
 			return votes;
 		}
@@ -150,6 +187,7 @@ public class JsoNcheckpointApplication {
 			this.votes = votes;
 		}
 
+		@JsonProperty("Gross")
 		public double getGross() {
 			return gross;
 		}
@@ -158,6 +196,7 @@ public class JsoNcheckpointApplication {
 			this.gross = gross;
 		}
 
+		@JsonProperty("Year")
 		public String getYear() {
 			return year;
 		}
@@ -166,6 +205,7 @@ public class JsoNcheckpointApplication {
 			this.year = year;
 		}
 
+		@JsonProperty("Credits")
 		public List<personObj> getCredits() {
 			return credits;
 		}
@@ -223,9 +263,8 @@ public class JsoNcheckpointApplication {
 	}
 
 	@PostMapping("/gross/total")
-	public Total grossTotal (@RequestBody List<singleMovie> theMovies) {
+	public Total grossTotal (@RequestBody() singleMovie themovie) {
 		Total newtotal = new Total();
-		System.out.println(theMovies.get(0).getTitle());
 
 		return newtotal;
 	}
