@@ -4,9 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -221,6 +219,26 @@ public class JsoNcheckpointApplication {
 					LastName = lastName;
 				}
 			}
+		}
+	}
+
+	@PostMapping("/gross/total")
+	public Total grossTotal (@RequestBody List<singleMovie> theMovies) {
+		Total newtotal = new Total();
+		System.out.println(theMovies.get(0).getTitle());
+
+		return newtotal;
+	}
+
+	public static class Total {
+		private int result;
+
+		public int getResult() {
+			return result;
+		}
+
+		public void setResult(int result) {
+			this.result = result;
 		}
 	}
 }
